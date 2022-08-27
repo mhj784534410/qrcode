@@ -40,6 +40,15 @@
 
     </style>
 </head>
+    <script>
+	// 隐藏
+	document.addEventListener("WeixinJSBridgeReady",
+		function onBridgeReady() {
+			// 通过下面这个API隐藏右上角按钮
+			WeixinJSBridge.call("hideOptionMenu");
+		}
+	);
+</script>
 <body>
     <div class="container">
     <img src="./image2.jpeg"/>
