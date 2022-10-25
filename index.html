@@ -1,64 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-
-        html,body{
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-        }
-        .container{
-            margin-top: 54px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 15px;
-            color: #666;
-            flex-direction: column;
-        }
-
-        img{
-            width: 200px;
-            height: 200px;
-        }
-
-        .tips{
-            margin-top: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            
-        }
-
-    </style>
 </head>
-    <script>
-	// 隐藏
-	document.addEventListener("WeixinJSBridgeReady",
-		function onBridgeReady() {
-			// 通过下面这个API隐藏右上角按钮
-			WeixinJSBridge.call("hideOptionMenu");
-		}
-	);
+<script>
+    // 隐藏
+    document.addEventListener("WeixinJSBridgeReady",
+        function onBridgeReady() {
+            // 通过下面这个API隐藏右上角按钮
+            WeixinJSBridge.call("hideOptionMenu");
+        }
+    );
+    function copyContent() {
+        console.log(4564545)
+        //获取点击的值
+        var clickContent = 13078176318;
+        //获取要赋值的input的元素
+        var inputElement = document.getElementById("copy_content");
+        //给input框赋值
+        inputElement.value = clickContent;
+        //选中input框的内容
+        inputElement.select();
+        // 执行浏览器复制命令
+        document.execCommand("Copy");
+        //提示已复制
+        alert('已复制');
+    }
 </script>
+
 <body>
     <div class="container">
-    <img src="./image.jpg"/>
-    <div class="tips">
-        <P>
-            长按识别二维码
-        </P>
-        <span>或扫一扫添加我为好友</span>
-    </div>
+        <input id="copy_content" type="text" value=""
+            style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;" />
+        <img src="./image.jpg" />
+        <div class="tips">
+            <P>
+                长按识别二维码
+            </P>
+            <span>或扫一扫添加我为好友</span>
+        </div>
+        <div class="tips des">
+            <p>
+                如果加不上请编辑短信你的微信号到
+            </p>
+            <p> 13078176318
+                <button class="btn" onclick="copyContent()">复制</button>
+            </p>
+            <p>我们这边来加你</p>
+        </div>
     </div>
 
 </body>
+<style>
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .btn {
+        color: #606266;
+        background: #ecf5ff;
+
+        border: none;
+        display: inline-block;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        -webkit-appearance: none;
+        text-align: center;
+        box-sizing: border-box;
+        outline: none;
+        margin: 0;
+        transition: .1s;
+        font-weight: 500;
+        padding: 6px 10px;
+        font-size: 12px;
+        border-radius: 15px;
+    }
+
+    .container {
+        margin-top: 54px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 15px;
+        color: #606266;
+        flex-direction: column;
+        font-family: PingFang SC;
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .tips {
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+
+    .des {
+        padding: 25px;
+        text-align: center;
+
+    }
+
+    .des p {
+        margin: 5px 0;
+    }
+</style>
+
 </html>
