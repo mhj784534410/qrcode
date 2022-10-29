@@ -30,13 +30,44 @@
         //提示已复制
         alert('已复制');
     }
+
+    var index = 0;
+    function handleNext(type) {
+        var img = document.getElementById("image");
+        if (type == 2) {
+            index++
+        } else {
+            index--
+        }
+
+        if (index == 2) {
+            index = 0
+        } else if (index == -1) {
+            index = 1
+        }
+        document.getElementById("image").style.left = - index * 200 + 'px'
+
+    }
 </script>
 
 <body>
     <div class="container">
         <input id="copy_content" type="text" value=""
             style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;" />
-        <img src="./image2.jpg" />
+
+        <div class="swiper">
+            <img class="icon" src="./left.png" onclick='handleNext(1)' />
+            <div class="code">
+                <div id="image" class="code-2">
+                    <img src="./image1.jpg" />
+                    <img src="./image2.jpg" />
+                </div>
+
+            </div>
+
+            <img class="icon" src="./right.png" onclick="handleNext(2)" />
+        </div>
+
         <div class="tips">
             <P>
                 长按识别二维码
@@ -48,8 +79,9 @@
                 如果加不上请编辑短信你的微信号到
             </p>
             <p> 13078176318
-                <a class="btn" href="sms:13078176318">发短信</a>
-<!--                 <button class="btn" onclick="copyContent()">复制</button> -->
+
+                <a class="btn" href="sms:15666666666">发短信</a>
+                <!-- <button class="btn" onclick="copyContent()">复制</button> -->
             </p>
             <p>我们这边来加你</p>
         </div>
@@ -99,9 +131,30 @@
         font-family: PingFang SC;
     }
 
-    img {
+    .swiper {
+        display: flex;
+        align-items: center;
+        width: 80%;
+        justify-content: space-between;
+    }
+
+    .code {
         width: 200px;
         height: 200px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .code-2 {
+        position: absolute;
+        width: max-content;
+        transition-duration: .7s;
+        left: 0;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
     }
 
     .tips {
